@@ -1,0 +1,10 @@
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\obj\Debug\netstandard2.0\senai.spacekids.repository.csproj.CoreCompileInputs.cache
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\obj\Debug\netstandard2.0\senai.spacekids.repository.AssemblyInfoInputs.cache
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\obj\Debug\netstandard2.0\senai.spacekids.repository.AssemblyInfo.cs
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\bin\Debug\netstandard2.0\senai.spacekids.repository.deps.json
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\bin\Debug\netstandard2.0\senai.spacekids.repository.dll
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\bin\Debug\netstandard2.0\senai.spacekids.repository.pdb
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\bin\Debug\netstandard2.0\senai.spacekids.domain.dll
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\bin\Debug\netstandard2.0\senai.spacekids.domain.pdb
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\obj\Debug\netstandard2.0\senai.spacekids.repository.dll
+C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.repository\obj\Debug\netstandard2.0\senai.spacekids.repository.pdb
