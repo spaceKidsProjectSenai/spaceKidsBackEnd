@@ -30,6 +30,18 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Design/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/2.0.1": {
         "type": "package",
         "dependencies": {
@@ -201,7 +213,7 @@
           }
         }
       },
-      "NETStandard.Library/2.0.0": {
+      "NETStandard.Library/2.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -794,6 +806,19 @@
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.Design/2.0.1": {
+      "sha512": "gEdT/YSI/buO15X/UN+gQY6D7qeozRYU80WuesZCj33jJBw4wCHHn8SYcp38k2BPOBDC4I2AfsOFH6Vaf8CeLQ==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.design/2.0.1",
+      "files": [
+        "lib/net461/Microsoft.EntityFrameworkCore.Design.dll",
+        "lib/net461/Microsoft.EntityFrameworkCore.Design.xml",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
+        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
+        "microsoft.entityframeworkcore.design.2.0.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Relational/2.0.1": {
       "sha512": "aZgfEDEzub+n9Kmsz/l4iiUHfB+R2iDDAFtW55OLpT7ANj7mS8k/bq8mqd60rVPgWKKy1l0+BK26ao4el/07lA==",
       "type": "package",
@@ -979,10 +1004,10 @@
         "version.txt"
       ]
     },
-    "NETStandard.Library/2.0.0": {
-      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+    "NETStandard.Library/2.0.1": {
+      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
       "type": "package",
-      "path": "netstandard.library/2.0.0",
+      "path": "netstandard.library/2.0.1",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -1103,7 +1128,7 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.0.nupkg.sha512",
+        "netstandard.library.2.0.1.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     },
@@ -2949,30 +2974,31 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Microsoft.EntityFrameworkCore >= 2.0.1",
+      "Microsoft.EntityFrameworkCore.Design >= 2.0.1",
       "Microsoft.EntityFrameworkCore.Relational >= 2.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.1",
-      "NETStandard.Library >= 2.0.0",
+      "NETStandard.Library >= 2.0.1",
       "senai.spacekids.domain >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\48985942808\\.nuget\\packages\\": {},
+    "C:\\Users\\henry\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\48985942808\\backend\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj",
+      "projectUniqueName": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj",
       "projectName": "senai.spacekids.repository",
-      "projectPath": "C:\\Users\\48985942808\\backend\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj",
-      "packagesPath": "C:\\Users\\48985942808\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\48985942808\\backend\\senai.spacekids.solution\\senai.spacekids.repository\\obj\\",
+      "projectPath": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj",
+      "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\48985942808\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -2983,8 +3009,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\48985942808\\backend\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj": {
-              "projectPath": "C:\\Users\\48985942808\\backend\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj"
+            "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj": {
+              "projectPath": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj"
             }
           }
         }
@@ -2998,23 +3024,27 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "NETStandard.Library": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "2.0.1"
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
-            "version": "2.0.1"
+            "version": "[2.0.1, )"
           },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
-            "version": "2.0.1"
+            "version": "[2.0.1, )"
+          },
+          "NETStandard.Library": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.0.1, )",
+            "autoReferenced": true
           }
         },
         "imports": [

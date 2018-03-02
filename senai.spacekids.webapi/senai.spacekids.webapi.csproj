@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-  <ProjectReference Include="..\senai.spacekids.repository\senai.spacekids.repository.csproj"/>
+    <ProjectReference Include="..\senai.spacekids.repository\senai.spacekids.repository.csproj"/>
+    <ProjectReference Include="..\senai.spacekids.domain\senai.spacekids.domain.csproj"/>
  </ItemGroup>
+
 
 </Project>

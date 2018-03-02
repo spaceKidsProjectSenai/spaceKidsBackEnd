@@ -14,6 +14,7 @@ namespace senai.spacekids.webapi
     {
         public static void Main(string[] args)
         {
+            
             BuildWebHost(args).Run();
         }
 

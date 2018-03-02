@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "c69d2e0542793ada086300c4ce2d02aaf81677ca"
+    "signature": "8201d095af880a8c933540960bf63d13ce6760ad"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
+          "senai.spacekids.domain": "1.0.0",
           "senai.spacekids.repository": "1.0.0"
         },
         "runtime": {
@@ -234,7 +235,7 @@
           "Microsoft.Data.Sqlite": "2.0.0",
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Design": "2.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.1",
           "Microsoft.EntityFrameworkCore.InMemory": "2.0.0",
           "Microsoft.EntityFrameworkCore.Relational": "2.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
@@ -1590,7 +1591,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/2.0.0": {
+      "Microsoft.EntityFrameworkCore.Design/2.0.1": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "2.0.1"
         },
@@ -1657,7 +1658,7 @@
       },
       "Microsoft.EntityFrameworkCore.Tools/2.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "2.0.0"
+          "Microsoft.EntityFrameworkCore.Design": "2.0.1"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/2.0.0": {
@@ -3809,6 +3810,7 @@
       "senai.spacekids.repository/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.0.1",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.1",
           "Microsoft.EntityFrameworkCore.Relational": "2.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
           "senai.spacekids.domain": "1.0.0"
@@ -4704,12 +4706,12 @@
       "path": "microsoft.entityframeworkcore/2.0.1",
       "hashPath": "microsoft.entityframeworkcore.2.0.1.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Design/2.0.0": {
+    "Microsoft.EntityFrameworkCore.Design/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-v8e4OwmK+BIm7jINmGJaQz1+r6BiFl+bGJNVUF4JQZ9H40keeTIHEgKDxdEr+24EdllfLLKTisEziq1H089TYg==",
-      "path": "microsoft.entityframeworkcore.design/2.0.0",
-      "hashPath": "microsoft.entityframeworkcore.design.2.0.0.nupkg.sha512"
+      "sha512": "sha512-gEdT/YSI/buO15X/UN+gQY6D7qeozRYU80WuesZCj33jJBw4wCHHn8SYcp38k2BPOBDC4I2AfsOFH6Vaf8CeLQ==",
+      "path": "microsoft.entityframeworkcore.design/2.0.1",
+      "hashPath": "microsoft.entityframeworkcore.design.2.0.1.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.InMemory/2.0.0": {
       "type": "package",

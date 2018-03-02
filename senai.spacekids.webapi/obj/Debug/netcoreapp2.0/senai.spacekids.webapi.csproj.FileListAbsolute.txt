@@ -12,3 +12,17 @@ C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.webapi\bin
 C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.domain.pdb
 C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.dll
 C:\Users\48985942808\backend\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.pdb
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.csproj.CoreCompileInputs.cache
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.AssemblyInfoInputs.cache
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.AssemblyInfo.cs
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.dll
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.pdb
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.webapi.deps.json
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.webapi.runtimeconfig.json
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.webapi.runtimeconfig.dev.json
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.webapi.dll
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.webapi.pdb
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.domain.dll
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.repository.dll
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.repository.pdb
+C:\Users\henry\CSharp\senai.spacekids.solution\senai.spacekids.webapi\bin\Debug\netcoreapp2.0\senai.spacekids.domain.pdb

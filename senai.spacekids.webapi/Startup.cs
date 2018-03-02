@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using senai.spacekids.repository.Context;
 using Microsoft.EntityFrameworkCore;
+using senai.spacekids.domain.Contracts;
+using senai.spacekids.repository.Repositories;
 namespace senai.spacekids.webapi
 {
     public class Startup
@@ -20,11 +22,19 @@ namespace senai.spacekids.webapi
         {
             Configuration = configuration;
         }
+
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SpaceKidsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SpaceKids")));
+
+            services.AddMvc().AddJsonOptions(options => {
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+             });;
+
+             services.AddScoped(typeof(IBaseRepository<>),typeof(BaseRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +44,7 @@ namespace senai.spacekids.webapi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMvc();
 
             
         }
