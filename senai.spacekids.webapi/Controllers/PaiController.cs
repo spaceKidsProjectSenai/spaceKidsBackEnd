@@ -1,64 +1,72 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using senai.spacekids.repository.Context;
-using senai.spacekids.domain.Entities;
-using senai.spacekids.domain.Contracts;
 using Microsoft.AspNetCore.Mvc;
-namespace senai.spacekids.webapi.Controllers
-{
-    [Route("api/[controller]")]
-    public class PaiController:Controller
-    {
+using senai.spacekids.domain.Contracts;
+using senai.spacekids.domain.Entities;
+using senai.spacekids.repository.Context;
+
+
+namespace senai.spacekids.webapi.Controllers {
+    [Route ("api/[controller]")]
+    public class PaiController : Controller {
         private IBaseRepository<Login> _loginRepository;
         private IBaseRepository<Pai> _paiRepository;
 
-
-        public PaiController(IBaseRepository<Login> loginRepository, IBaseRepository<Pai> paiRepository) 
-        {
+        public PaiController (IBaseRepository<Login> loginRepository, IBaseRepository<Pai> paiRepository) {
             _loginRepository = loginRepository;
             _paiRepository = paiRepository;
         }
 
+        [Route ("cadastrar")]
         [HttpPost]
-        public IActionResult Cadastro([FromBody] Pai pai, Login login) 
-        {
+        public IActionResult Cadastro ([FromBody] Pai pai) {
             if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+                return BadRequest (ModelState);
 
-            _loginRepository.Inserir(login); 
-            var a = _paiRepository.Inserir(pai);
-
-            if(a > 0) {
-             return Ok(pai.nome +" "+ login.email+" cadastrado com sucesso");
-            }else {
-                return BadRequest();
+            try {
+                _paiRepository.Inserir (pai);
+                return Ok ("Pai " + pai.Login.email + " " + pai.nome + " Cadastrado Com Sucesso.");
+            } catch (Exception ex) {
+                return BadRequest ("Erro ao cadastrar dados. " + ex.Message);
             }
         }
 
+        [Route("deletar/{id}")]
         [HttpDelete]
-        public IActionResult Deletar(Pai p, Login l) {
-            var pai = _paiRepository.Deletar(p);
-            var login = _loginRepository.Deletar(l);
-            if(pai > 0 && login > 0)   {
-                return Ok(p.nome+" "+l.email+" excluidos com sucesso");
-            } else {
-                return BadRequest();
+        public IActionResult Deletar (int id) {
+
+            try {
+                 _paiRepository.Deletar (id);
+                 _loginRepository.Deletar(id);
+                return Ok ("excluido com sucesso");
+            } catch (System.Exception e) {
+
+                return BadRequest ("Erro ao deletar usuario " + e.Message);
+            }
+
+        }
+
+        [Route("atualizar/{id}")]
+        [HttpPut]
+        public IActionResult Atualizar (int id, [FromBody] Pai pai) {
+            
+            try
+            {
+            var p = _paiRepository.BuscarPorId(id);
+            p.nome = pai.nome;
+            p.Login.email = pai.Login.email;
+            p.Login.senha = pai.Login.senha;
+
+            _paiRepository.Atualizar (p);
+            return Ok($" {p.nome} atualizado com sucesso");
+            }
+            catch (System.Exception e)
+            {
+                
+                return BadRequest($"Erro ao atualizar {pai.nome} "+e.Message);
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Atualizar(Pai p, Login l) {
-
-            var pai = _paiRepository.Atualizar(p);
-            var login = _loginRepository.Atualizar(l);
-            if(pai > 0 && login > 0) {
-                return Ok("Atualizados com sucesso");
-            } else {
-                return BadRequest();
-            }
-        }
-        
     }
 }

@@ -10,7 +10,7 @@ namespace senai.spacekids.domain.Contracts
 
          int Inserir(T dados);
 
-         int Deletar(T dados);
+         int Deletar(int id);
 
          T BuscarPorId(int id, string[] includes = null);
     }

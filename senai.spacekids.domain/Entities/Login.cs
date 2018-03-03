@@ -6,7 +6,7 @@ namespace senai.spacekids.domain.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int loginId {get;set;}
+        public int LoginId {get;set;}
         [Required]
         [StringLength(50, MinimumLength = 4)]
         [DataType(DataType.EmailAddress)]

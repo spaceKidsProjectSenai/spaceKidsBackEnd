@@ -55,9 +55,10 @@ namespace senai.spacekids.repository.Repositories
             }
         }
 
-        public int Deletar (T dados) {
+        public int Deletar (int id) {
             try {
-
+                var chavePrimaria = _context.Model.FindEntityType (typeof (T)).FindPrimaryKey ().Properties[0];
+                var dados = _context.Set<T> ().FirstOrDefault (e => EF.Property<int> (e, chavePrimaria.Name) == id);
                 _context.Set<T> ().Remove (dados);
                 return _context.SaveChanges ();
 

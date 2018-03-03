@@ -7,7 +7,7 @@ namespace senai.spacekids.domain.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int criancaId {get;set;}
+        public int CriancaId {get;set;}
 
         [Required]
         [StringLength(100)]

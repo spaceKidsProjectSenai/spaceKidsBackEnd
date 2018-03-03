@@ -12,9 +12,9 @@ namespace senai.spacekids.domain.Entities
         [StringLength(100)]
         public string nome {get;set;}
 
-        [ForeignKey("loginId")]
+        [ForeignKey("LoginId")]
         public Login Login{get;set;}
-        public int loginId{get;set;}
+        public int LoginId{get;set;}
 
         public ICollection<Crianca> Criancas{get;set;}
     }
