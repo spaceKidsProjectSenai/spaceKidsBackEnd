@@ -99,5 +99,18 @@ namespace senai.spacekids.webapi.Controllers
         //     }
         // }
 
+        [Route("listar")]
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            try
+            {
+                return Ok(_paiRepository.Listar());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Erro ao listar dados. " + ex.Message);
+            }
+        }
     }
 }

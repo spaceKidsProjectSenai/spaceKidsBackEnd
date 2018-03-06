@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace senai.spacekids.domain.Entities
 {
-    public class Login
+    public class Login 
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -11,9 +11,12 @@ namespace senai.spacekids.domain.Entities
         [StringLength(50, MinimumLength = 4)]
         [DataType(DataType.EmailAddress)]
         public string email {get;set;}
+
         [Required]
         [StringLength(12, MinimumLength = 4)]
         [DataType(DataType.Password)]
         public string senha {get;set;}
+
+        public Pai Pai { get; set; }
     }
 }

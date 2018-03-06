@@ -274,28 +274,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\henry\\.nuget\\packages\\": {},
+    "C:\\Users\\Maciel\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
+      "projectUniqueName": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
       "projectName": "senai.spacekids.domain",
-      "projectPath": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
-      "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\henry\\CSharp\\senai.spacekids.solution\\senai.spacekids.domain\\obj\\",
+      "projectPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
+      "packagesPath": "C:\\Users\\Maciel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Maciel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace senai.spacekids.repository.Migrations
 {
-    public partial class bancoinicial : Migration
+    public partial class spacekids : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,14 +13,14 @@ namespace senai.spacekids.repository.Migrations
                 name: "Logins",
                 columns: table => new
                 {
-                    loginId = table.Column<int>(nullable: false)
+                    LoginId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     email = table.Column<string>(maxLength: 50, nullable: false),
                     senha = table.Column<string>(maxLength: 12, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Logins", x => x.loginId);
+                    table.PrimaryKey("PK_Logins", x => x.LoginId);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,17 +29,17 @@ namespace senai.spacekids.repository.Migrations
                 {
                     paiId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    loginId = table.Column<int>(nullable: false),
+                    LoginId = table.Column<int>(nullable: false),
                     nome = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pais", x => x.paiId);
                     table.ForeignKey(
-                        name: "FK_Pais_Logins_loginId",
-                        column: x => x.loginId,
+                        name: "FK_Pais_Logins_LoginId",
+                        column: x => x.LoginId,
                         principalTable: "Logins",
-                        principalColumn: "loginId",
+                        principalColumn: "LoginId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -47,7 +47,7 @@ namespace senai.spacekids.repository.Migrations
                 name: "Criancas",
                 columns: table => new
                 {
-                    criancaId = table.Column<int>(nullable: false)
+                    CriancaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     foto = table.Column<string>(nullable: true),
                     idade = table.Column<int>(nullable: false),
@@ -56,7 +56,7 @@ namespace senai.spacekids.repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Criancas", x => x.criancaId);
+                    table.PrimaryKey("PK_Criancas", x => x.CriancaId);
                     table.ForeignKey(
                         name: "FK_Criancas_Pais_paiId",
                         column: x => x.paiId,
@@ -69,19 +69,19 @@ namespace senai.spacekids.repository.Migrations
                 name: "Fases",
                 columns: table => new
                 {
-                    faseId = table.Column<int>(nullable: false)
+                    FaseId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    criancaId = table.Column<int>(nullable: true),
+                    CriancaId = table.Column<int>(nullable: true),
                     nome = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fases", x => x.faseId);
+                    table.PrimaryKey("PK_Fases", x => x.FaseId);
                     table.ForeignKey(
-                        name: "FK_Fases_Criancas_criancaId",
-                        column: x => x.criancaId,
+                        name: "FK_Fases_Criancas_CriancaId",
+                        column: x => x.CriancaId,
                         principalTable: "Criancas",
-                        principalColumn: "criancaId",
+                        principalColumn: "CriancaId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -104,13 +104,13 @@ namespace senai.spacekids.repository.Migrations
                         name: "FK_Desempenhos_Criancas_criancaId",
                         column: x => x.criancaId,
                         principalTable: "Criancas",
-                        principalColumn: "criancaId",
+                        principalColumn: "CriancaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Desempenhos_Fases_faseId",
                         column: x => x.faseId,
                         principalTable: "Fases",
-                        principalColumn: "faseId",
+                        principalColumn: "FaseId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -130,14 +130,15 @@ namespace senai.spacekids.repository.Migrations
                 column: "faseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fases_criancaId",
+                name: "IX_Fases_CriancaId",
                 table: "Fases",
-                column: "criancaId");
+                column: "CriancaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pais_loginId",
+                name: "IX_Pais_LoginId",
                 table: "Pais",
-                column: "loginId");
+                column: "LoginId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
