@@ -39,8 +39,6 @@ namespace senai.spacekids.webapi.Controllers
             }
         }
 
-        
-
         [Route("deletar/{id}")]
         [HttpDelete]
         public IActionResult Deletar(int id)
@@ -78,26 +76,6 @@ namespace senai.spacekids.webapi.Controllers
             }
 
         }
-        // public IActionResult Atualizar (int id, [FromBody] Pai pai) {
-
-        //     try
-        //     {
-        //     var p = _paiRepository.BuscarPorId(id);
-        //     p.nome = pai.nome;
-        //     Login login = new Login();
-        //     login.email = pai.Login.email;
-        //     login.senha = pai.Login.senha;
-
-
-        //     _paiRepository.Atualizar (p);
-        //     return Ok($" {p.nome} atualizado com sucesso");
-        //     }
-        //     catch (System.Exception e)
-        //     {
-
-        //         return BadRequest($"Erro ao atualizar {pai.nome} "+e.Message);
-        //     }
-        // }
 
         [Route("listar")]
         [HttpGet]
@@ -105,7 +83,7 @@ namespace senai.spacekids.webapi.Controllers
         {
             try
             {
-                return Ok(_paiRepository.Listar());
+                return Ok(_paiRepository.Listar(new string[]{"Criancas"}));
             }
             catch (Exception ex)
             {
