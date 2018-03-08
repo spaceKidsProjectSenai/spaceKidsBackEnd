@@ -16,8 +16,9 @@ namespace senai.spacekids.domain.Entities
         [Required]
         public int idade {get;set;}
         
+        // TODO: Incluir ENum
         [Required]
-        public int sexo;
+        public string sexo{get; set;}
         public string foto {get;set;}
 
         [ForeignKey("paiId")]

@@ -20,7 +20,10 @@ namespace senai.spacekids.repository.Context
             modelBuilder.Entity<Fase>().ToTable("Fases");
             modelBuilder.Entity<Desempenho>().ToTable("Desempenhos");
 
+            modelBuilder.Entity<Login>().HasIndex(c => c.email).IsUnique();
             base.OnModelCreating(modelBuilder);
+
+
         }
         
     }

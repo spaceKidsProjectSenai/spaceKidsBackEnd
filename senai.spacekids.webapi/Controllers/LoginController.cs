@@ -9,6 +9,7 @@ namespace senai.spacekids.webapi.Controllers
 
     public class LoginController : Controller
     {
+         
         private IBaseRepository<Login> _loginRepository;
 
         public LoginController(IBaseRepository<Login> loginRepository)
@@ -26,7 +27,7 @@ namespace senai.spacekids.webapi.Controllers
             try
             {
                 _loginRepository.Inserir(login);
-                return Ok("Login " + login.email + "Login validado");
+                return Ok("Login " + login.email + " Login validado");
             }
             catch (Exception ex)
             {
@@ -63,13 +64,26 @@ namespace senai.spacekids.webapi.Controllers
             try
             {
                 _loginRepository.Atualizar(login);
-                return Ok($"Usuário {login.email} Atualizado Com Sucesso.");
+                return Ok($"Usuário {login.email} Atualizado Com sucesso.");
             }
             catch (Exception ex)
             {
-                return BadRequest("Erro ao atualizar dados. " + ex.Message);
+                return BadRequest("Erro ao atualizar dados " + ex.Message);
             }
 
-        }        
+        }  
+        [Route("listar")]
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            try
+            {
+                return Ok(_loginRepository.Listar(new string[]{"Login"}));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Erro ao listar dados. " + ex.Message);
+            }
+        }      
     }
 }

@@ -35,6 +35,9 @@ namespace senai.spacekids.repository.Migrations
 
                     b.Property<int>("paiId");
 
+                    b.Property<string>("sexo")
+                        .IsRequired();
+
                     b.HasKey("CriancaId");
 
                     b.HasIndex("paiId");
@@ -98,6 +101,9 @@ namespace senai.spacekids.repository.Migrations
                         .HasMaxLength(12);
 
                     b.HasKey("LoginId");
+
+                    b.HasIndex("email")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });

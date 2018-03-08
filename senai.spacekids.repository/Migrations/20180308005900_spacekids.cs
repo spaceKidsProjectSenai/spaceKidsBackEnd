@@ -52,7 +52,8 @@ namespace senai.spacekids.repository.Migrations
                     foto = table.Column<string>(nullable: true),
                     idade = table.Column<int>(nullable: false),
                     nome = table.Column<string>(maxLength: 100, nullable: false),
-                    paiId = table.Column<int>(nullable: false)
+                    paiId = table.Column<int>(nullable: false),
+                    sexo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,6 +134,12 @@ namespace senai.spacekids.repository.Migrations
                 name: "IX_Fases_CriancaId",
                 table: "Fases",
                 column: "CriancaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Logins_email",
+                table: "Logins",
+                column: "email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pais_LoginId",

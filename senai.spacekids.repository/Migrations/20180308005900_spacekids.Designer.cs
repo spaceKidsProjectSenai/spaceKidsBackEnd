@@ -11,7 +11,7 @@ using System;
 namespace senai.spacekids.repository.Migrations
 {
     [DbContext(typeof(SpaceKidsContext))]
-    [Migration("20180306002452_spacekids")]
+    [Migration("20180308005900_spacekids")]
     partial class spacekids
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace senai.spacekids.repository.Migrations
                         .HasMaxLength(100);
 
                     b.Property<int>("paiId");
+
+                    b.Property<string>("sexo")
+                        .IsRequired();
 
                     b.HasKey("CriancaId");
 
@@ -99,6 +102,9 @@ namespace senai.spacekids.repository.Migrations
                         .HasMaxLength(12);
 
                     b.HasKey("LoginId");
+
+                    b.HasIndex("email")
+                        .IsUnique();
 
                     b.ToTable("Logins");
                 });
