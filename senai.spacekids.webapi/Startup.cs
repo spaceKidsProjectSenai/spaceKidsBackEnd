@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,10 +8,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using senai.spacekids.repository.Context;
 using Microsoft.EntityFrameworkCore;
 using senai.spacekids.domain.Contracts;
 using senai.spacekids.repository.Repositories;
+using Swashbuckle.AspNetCore.Swagger; 
+
 namespace senai.spacekids.webapi
 {
     public class Startup
@@ -28,6 +33,28 @@ namespace senai.spacekids.webapi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
+            services.AddSwaggerGen( c => 
+            {
+                c.SwaggerDoc("v1", new Info 
+                {
+                    Version = "v1",
+                    Title = "Forum Api",
+                    Description = "Test Simples",
+                    TermsOfService = "None",
+                    Contact = new Contact 
+                    {Name = "Cristiane Maciel", Email = "cristiane.pachecoreis@gmail.com"}
+                });
+                var basePath = AppContext.BaseDirectory;
+                var xmlPath = Path.Combine (basePath, "spacekids.xml");
+
+            c.IncludeXmlComments(xmlPath);
+
+            });
+
+
+
             services.AddDbContext<SpaceKidsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SpaceKids")));
 
             services.AddMvc().AddJsonOptions(options => {
@@ -45,6 +72,13 @@ namespace senai.spacekids.webapi
                 app.UseDeveloperExceptionPage();
             }
             app.UseMvc();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => 
+            {
+                c.SwaggerEndpoint ("/swagger/v1/swagger.json", "My API V1");
+            });
 
             
         }

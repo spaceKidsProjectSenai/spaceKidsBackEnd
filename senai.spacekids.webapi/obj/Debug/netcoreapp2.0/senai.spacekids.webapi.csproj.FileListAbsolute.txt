@@ -40,3 +40,4 @@ C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.webapi\obj\Debu
 C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.AssemblyInfo.cs
 C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.dll
 C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.webapi\obj\Debug\netcoreapp2.0\senai.spacekids.webapi.pdb
+C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.webapi\bin\DEBUG\netcoreapp2.0\spacekids.xml

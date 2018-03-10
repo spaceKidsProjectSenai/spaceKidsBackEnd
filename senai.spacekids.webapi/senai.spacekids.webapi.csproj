@@ -10,12 +10,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\senai.spacekids.repository\senai.spacekids.repository.csproj"/>
-    <ProjectReference Include="..\senai.spacekids.domain\senai.spacekids.domain.csproj"/>
+    <ProjectReference Include="..\senai.spacekids.repository\senai.spacekids.repository.csproj" />
+    <ProjectReference Include="..\senai.spacekids.domain\senai.spacekids.domain.csproj" />
  </ItemGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\DEBUG\netcoreapp2.0\spacekids.xml</DocumentationFile>
+  </PropertyGroup>
 
 </Project>
