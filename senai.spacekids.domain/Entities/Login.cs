@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace senai.spacekids.domain.Entities
@@ -17,6 +18,10 @@ namespace senai.spacekids.domain.Entities
         [DataType(DataType.Password)]
         public string senha {get;set;}
 
-        public Pai Pai { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string nome {get;set;}
+
+        public ICollection<Crianca> Criancas{get;set;}
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using senai.spacekids.domain.Contracts;
 using senai.spacekids.domain.Entities;
@@ -6,6 +7,7 @@ using senai.spacekids.domain.Entities;
 namespace senai.spacekids.webapi.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAnyOrigin")]
     public class CriancaController:Controller
     {
         private IBaseRepository<Crianca> _criancaRepository;
@@ -17,9 +19,19 @@ namespace senai.spacekids.webapi.Controllers
         /// <summary>
         /// Cadastra uma crianca no banco de dados
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
         /// <param name="crianca">dados da crianca conforme criterios estabelecidos. Faz-se necessario receber objeto inteiro.</param>
         /// <returns>String irá informar qual o objeto será cadastrado.</returns>
-        /// 
         
         [Route("cadastrar")]
         [HttpPost]
@@ -57,7 +69,7 @@ namespace senai.spacekids.webapi.Controllers
             }
             try
             {
-               return Ok (_criancaRepository.Listar(new string[]{"Crianca"}));
+               return Ok (_criancaRepository.Listar());
             }
             catch (System.Exception e)
             {

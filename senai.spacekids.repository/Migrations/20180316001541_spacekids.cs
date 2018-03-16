@@ -16,31 +16,12 @@ namespace senai.spacekids.repository.Migrations
                     LoginId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     email = table.Column<string>(maxLength: 50, nullable: false),
+                    nome = table.Column<string>(maxLength: 100, nullable: false),
                     senha = table.Column<string>(maxLength: 12, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logins", x => x.LoginId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pais",
-                columns: table => new
-                {
-                    paiId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LoginId = table.Column<int>(nullable: false),
-                    nome = table.Column<string>(maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pais", x => x.paiId);
-                    table.ForeignKey(
-                        name: "FK_Pais_Logins_LoginId",
-                        column: x => x.LoginId,
-                        principalTable: "Logins",
-                        principalColumn: "LoginId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,18 +32,18 @@ namespace senai.spacekids.repository.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     foto = table.Column<string>(nullable: true),
                     idade = table.Column<int>(nullable: false),
+                    loginId = table.Column<int>(nullable: false),
                     nome = table.Column<string>(maxLength: 100, nullable: false),
-                    paiId = table.Column<int>(nullable: false),
                     sexo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Criancas", x => x.CriancaId);
                     table.ForeignKey(
-                        name: "FK_Criancas_Pais_paiId",
-                        column: x => x.paiId,
-                        principalTable: "Pais",
-                        principalColumn: "paiId",
+                        name: "FK_Criancas_Logins_loginId",
+                        column: x => x.loginId,
+                        principalTable: "Logins",
+                        principalColumn: "LoginId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -116,9 +97,9 @@ namespace senai.spacekids.repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Criancas_paiId",
+                name: "IX_Criancas_loginId",
                 table: "Criancas",
-                column: "paiId");
+                column: "loginId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Desempenhos_criancaId",
@@ -140,12 +121,6 @@ namespace senai.spacekids.repository.Migrations
                 table: "Logins",
                 column: "email",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pais_LoginId",
-                table: "Pais",
-                column: "LoginId",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -158,9 +133,6 @@ namespace senai.spacekids.repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "Criancas");
-
-            migrationBuilder.DropTable(
-                name: "Pais");
 
             migrationBuilder.DropTable(
                 name: "Logins");

@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using senai.spacekids.domain.Contracts;
 using senai.spacekids.domain.Entities;
@@ -6,6 +7,7 @@ using senai.spacekids.domain.Entities;
 namespace senai.spacekids.webapi.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAnyOrigin")]
     public class FaseController : Controller
     {
         private IBaseRepository<Fase> _faseRepository;
@@ -49,36 +51,21 @@ namespace senai.spacekids.webapi.Controllers
                 return BadRequest("Erro ao deletar fase"+e.Message);
             }
         }
-        [Route("atualizar")]
-        [HttpPut]
-        public IActionResult Atualizar([FromBody] Fase fase)
-        {
-            if(!ModelState.IsValid)
-                return BadRequest(ModelState);
+        
+        [Route("buscarId/{id}")]
+        [HttpGet]
+        public IActionResult BuscarPorId(int id) {
             try
             {
-                _faseRepository.Atualizar(fase);
-                return Ok ($"Usuário{fase.nome} Atualizado com sucesso.");
+                _faseRepository.BuscarPorId(id);
+
+                return Ok("Busca com sucesso");
             }
-            catch (Exception ex)
+            catch (System.Exception e)
             {
-                return BadRequest("Erro ao atualizar "+ex.Message);
+                
+                return BadRequest("Erro ao buscar"+e.Message);
             }
         }
-
-        [Route("listar")]
-        [HttpGet]
-        public IActionResult Listar()
-        {
-            try
-            {
-                return Ok(_faseRepository.Listar(new string[]{"Fase"}));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("Erro ao listar dados. " + ex.Message);
-            }
-        }         
-
     }
 }

@@ -14,7 +14,10 @@ using senai.spacekids.repository.Context;
 using Microsoft.EntityFrameworkCore;
 using senai.spacekids.domain.Contracts;
 using senai.spacekids.repository.Repositories;
-using Swashbuckle.AspNetCore.Swagger; 
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Authorization;
+using senai.spacekids.domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace senai.spacekids.webapi
 {
@@ -33,6 +36,37 @@ namespace senai.spacekids.webapi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                builder => builder.AllowAnyOrigin());
+            });
+
+            var signingConfigurations = new SigningConfigurations();
+            services.AddSingleton(signingConfigurations);
+
+            var tokenConfigurations = new TokenConfigurations();
+            new ConfigureFromConfigurationOptions<TokenConfigurations>(
+                Configuration.GetSection("TokenConfigurations")).Configure(tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+            services.AddAuthentication(authOptions => { 
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(bearerOptions => {
+                var parametrosValidacao = bearerOptions.TokenValidationParameters;
+                parametrosValidacao.IssuerSigningKey = signingConfigurations.Key;
+                parametrosValidacao.ValidAudience = tokenConfigurations.Audience;
+                parametrosValidacao.ValidIssuer = tokenConfigurations.Issuer;
+                parametrosValidacao.ValidateIssuerSigningKey = true;
+            });
+
+            services.AddAuthorization(auth => {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .RequireAuthenticatedUser().Build());
+            });
+            
             services.AddMvc();
 
             services.AddSwaggerGen( c => 
@@ -71,6 +105,11 @@ namespace senai.spacekids.webapi
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseAuthentication();
+                
+            app.UseCors("AllowAnyOrigin");
+            
             app.UseMvc();
 
             app.UseSwagger();

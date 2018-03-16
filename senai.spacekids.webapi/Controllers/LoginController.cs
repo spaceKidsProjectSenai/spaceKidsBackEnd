@@ -1,11 +1,18 @@
 using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using senai.spacekids.domain.Contracts;
 using senai.spacekids.domain.Entities;
+using senai.spacekids.repository.Repositories;
 
 namespace senai.spacekids.webapi.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAnyOrigin")]
 
     public class LoginController : Controller
     {
@@ -16,9 +23,60 @@ namespace senai.spacekids.webapi.Controllers
         {
             _loginRepository = loginRepository;
         }
+
+        [Route("login")]
+        [HttpGet]
+        public IActionResult Validar([FromBody] Login login, [FromServices] SigningConfigurations signingConfigurations, [FromServices] TokenConfigurations tokenConfigurations)
+        {
+            Login log = _loginRepository.Listar().FirstOrDefault(c => c.email == login.email && c.senha == login.senha);
+            if (log != null)
+            {
+                ClaimsIdentity identity = new ClaimsIdentity(
+                    new GenericIdentity(login.LoginId.ToString(), "Login"),
+                    new[] {
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
+                        new Claim(JwtRegisteredClaimNames.UniqueName, log.LoginId.ToString()),
+                        new Claim(ClaimTypes.Email, log.email)
+                    }
+                );
+
+                DateTime dataCriacao = DateTime.Now;
+                DateTime dataExpiracao = dataCriacao + TimeSpan.FromSeconds(tokenConfigurations.Seconds);
+
+                var handler = new JwtSecurityTokenHandler();
+                var securityToken = handler.CreateToken(new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor
+                {
+                    Issuer = tokenConfigurations.Issuer,
+                    Audience = tokenConfigurations.Audience,
+                    SigningCredentials = signingConfigurations.SigningCredentials,
+                    Subject = identity
+                });
+
+                var token = handler.WriteToken(securityToken);
+                var retorno = new
+                {
+                    autenticacao = true,
+                    created = dataCriacao.ToString("yyyy-MM-dd HH:mm:ss"),
+                    expiration = dataExpiracao.ToString("yyyy-MM-dd HH:mm:ss"),
+                    acessToken = token,
+                    message = "Ok"
+                };
+
+                return Ok(retorno);
+            }
+
+            var retornoerro = new
+            {
+                autenticacao = false,
+                message = "Falha na Autenticação"
+            };
+
+            return BadRequest(retornoerro);
+            
+        }      
+       
         [Route("cadastrar")]
         [HttpPost]
-
         public IActionResult Cadastro([FromBody] Login login)
         {
             if (!ModelState.IsValid)
@@ -64,7 +122,7 @@ namespace senai.spacekids.webapi.Controllers
             try
             {
                 _loginRepository.Atualizar(login);
-                return Ok($"Usuário {login.email} Atualizado Com sucesso.");
+                return Ok($"Usuário {login.nome} Atualizado Com sucesso.");
             }
             catch (Exception ex)
             {
@@ -72,6 +130,7 @@ namespace senai.spacekids.webapi.Controllers
             }
 
         }  
+
         [Route("listar")]
         [HttpGet]
         public IActionResult Listar()

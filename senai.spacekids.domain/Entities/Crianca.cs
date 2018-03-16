@@ -21,9 +21,9 @@ namespace senai.spacekids.domain.Entities
         public string sexo{get; set;}
         public string foto {get;set;}
 
-        [ForeignKey("paiId")]
-        public Pai pai {get;set;}
-        public int paiId{get;set;}
+        [ForeignKey("loginId")]
+        public Login login {get;set;}
+        public int loginId{get;set;}
 
 
         public ICollection<Fase> Fases{get;set;}

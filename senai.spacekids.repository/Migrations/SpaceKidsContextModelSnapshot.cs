@@ -29,18 +29,18 @@ namespace senai.spacekids.repository.Migrations
 
                     b.Property<int>("idade");
 
+                    b.Property<int>("loginId");
+
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasMaxLength(100);
-
-                    b.Property<int>("paiId");
 
                     b.Property<string>("sexo")
                         .IsRequired();
 
                     b.HasKey("CriancaId");
 
-                    b.HasIndex("paiId");
+                    b.HasIndex("loginId");
 
                     b.ToTable("Criancas");
                 });
@@ -96,6 +96,10 @@ namespace senai.spacekids.repository.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
                     b.Property<string>("senha")
                         .IsRequired()
                         .HasMaxLength(12);
@@ -108,30 +112,11 @@ namespace senai.spacekids.repository.Migrations
                     b.ToTable("Logins");
                 });
 
-            modelBuilder.Entity("senai.spacekids.domain.Entities.Pai", b =>
-                {
-                    b.Property<int>("paiId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("LoginId");
-
-                    b.Property<string>("nome")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.HasKey("paiId");
-
-                    b.HasIndex("LoginId")
-                        .IsUnique();
-
-                    b.ToTable("Pais");
-                });
-
             modelBuilder.Entity("senai.spacekids.domain.Entities.Crianca", b =>
                 {
-                    b.HasOne("senai.spacekids.domain.Entities.Pai", "pai")
+                    b.HasOne("senai.spacekids.domain.Entities.Login", "login")
                         .WithMany("Criancas")
-                        .HasForeignKey("paiId")
+                        .HasForeignKey("loginId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -153,14 +138,6 @@ namespace senai.spacekids.repository.Migrations
                     b.HasOne("senai.spacekids.domain.Entities.Crianca")
                         .WithMany("Fases")
                         .HasForeignKey("CriancaId");
-                });
-
-            modelBuilder.Entity("senai.spacekids.domain.Entities.Pai", b =>
-                {
-                    b.HasOne("senai.spacekids.domain.Entities.Login", "Login")
-                        .WithOne("Pai")
-                        .HasForeignKey("senai.spacekids.domain.Entities.Pai", "LoginId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
