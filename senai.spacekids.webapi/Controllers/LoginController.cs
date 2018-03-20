@@ -23,6 +23,23 @@ namespace senai.spacekids.webapi.Controllers
         {
             _loginRepository = loginRepository;
         }
+        /// <summary>
+        /// Cadastra e realiza login do pai no banco de dados
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="pai">dados do pai conforme criterios estabelecidos. Faz-se necessario receber objeto inteiro.</param>
+        /// <returns>String irá informar qual o objeto será cadastrado.</returns>        
+                        
 
         [Route("login")]
         [HttpGet]
@@ -73,7 +90,11 @@ namespace senai.spacekids.webapi.Controllers
 
             return BadRequest(retornoerro);
             
-        }      
+        } 
+        /// <summary>
+        /// Efetua o cadastro do pai no sistema.
+        /// </summary>
+        /// <returns>Retorna uma lista de pais cadastrados.</returns>
        
         [Route("cadastrar")]
         [HttpPost]
@@ -93,6 +114,11 @@ namespace senai.spacekids.webapi.Controllers
             }            
         }
 
+        /// <summary>
+        /// Deleta o cadastro do pai no sistema.
+        /// </summary>
+        /// <returns>Deleta o cadastro de um pai pelo Id.</returns>
+  
         [Route("deletar/{id}")]
         [HttpDelete]
         public IActionResult Deletar(int id)
@@ -111,6 +137,11 @@ namespace senai.spacekids.webapi.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Efetua a atualização dos dados do login do pai.
+        /// </summary>
+        /// <returns>Retorna um login atualizado.</returns> 
 
         [Route("atualizar")]
         [HttpPut]
@@ -131,6 +162,11 @@ namespace senai.spacekids.webapi.Controllers
 
         }  
 
+        /// <summary>
+        /// Cria uma lista com os cadastros dos pais no sistema.
+        /// </summary>
+        /// <returns>Retorna uma lista de pais cadastrados.</returns>     
+ 
         [Route("listar")]
         [HttpGet]
         public IActionResult Listar()
@@ -143,6 +179,6 @@ namespace senai.spacekids.webapi.Controllers
             {
                 return BadRequest("Erro ao listar dados. " + ex.Message);
             }
-        }      
-    }
+        } 
+   }
 }

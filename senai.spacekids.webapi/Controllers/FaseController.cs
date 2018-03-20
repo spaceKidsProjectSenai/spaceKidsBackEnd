@@ -17,6 +17,11 @@ namespace senai.spacekids.webapi.Controllers
             _faseRepository = faseRepository;
         }
 
+        /// <summary>
+        /// Efetua o cadastro da fase no sistema.
+        /// </summary>
+        /// <returns>Retorna uma lista de fases cadastradas.</returns>
+       
         [Route("cadastrar")]
         [HttpPost]
 
@@ -35,6 +40,12 @@ namespace senai.spacekids.webapi.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta o cadastro da fase no sistema.
+        /// </summary>
+        /// <returns>Deleta a fase pelo Id.</returns>
+
+
         [Route("deletar/{id}")]
         [HttpDelete]
 
@@ -51,6 +62,11 @@ namespace senai.spacekids.webapi.Controllers
                 return BadRequest("Erro ao deletar fase"+e.Message);
             }
         }
+        /// <summary>
+        /// Realiza a busca da fase no sistema pelo Id.
+        /// </summary>
+        /// <returns>Busca a fase da criança pelo Id.</returns>
+
         
         [Route("buscarId/{id}")]
         [HttpGet]

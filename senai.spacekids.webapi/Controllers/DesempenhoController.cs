@@ -16,6 +16,11 @@ namespace senai.spacekids.webapi.Controllers
         {
             _desempenhoRepository = desempenhoRepository;
         }
+        /// <summary>
+        /// Efetua o cadastro do desempenho da criança no sistema.
+        /// </summary>
+        /// <returns>Retorna o cadastro de desempenho da criança.</returns>
+ 
 
     [Route("cadastrar")]
     [HttpPost]

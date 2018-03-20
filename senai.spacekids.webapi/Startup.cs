@@ -78,7 +78,7 @@ namespace senai.spacekids.webapi
                     Description = "Test Simples",
                     TermsOfService = "None",
                     Contact = new Contact 
-                    {Name = "Cristiane Maciel", Email = "cristiane.pachecoreis@gmail.com"}
+                    {Name = "Cristiane Maciel, Henrique da Mata", Email = "cristiane.pachecoreis@gmail.com, henrique.damata.novai@gmail.com"}
                 });
                 var basePath = AppContext.BaseDirectory;
                 var xmlPath = Path.Combine (basePath, "spacekids.xml");
