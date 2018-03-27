@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using senai.spacekids.domain.Contracts;
 using senai.spacekids.domain.Entities;
 using senai.spacekids.repository.Repositories;
@@ -23,26 +24,24 @@ namespace senai.spacekids.webapi.Controllers
         {
             _loginRepository = loginRepository;
         }
+
         /// <summary>
         /// Cadastra e realiza login do pai no banco de dados
         /// </summary>
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /Todo
+        ///     POST / Login
         ///     {
-        ///        "id": 1,
-        ///        "name": "Item1",
-        ///        "isComplete": true
+        ///        "email": email@email.com,
+        ///        "senha": "1234",
         ///     }
         ///
         /// </remarks>
         /// <param name="pai">dados do pai conforme criterios estabelecidos. Faz-se necessario receber objeto inteiro.</param>
-        /// <returns>String irá informar qual o objeto será cadastrado.</returns>        
-                        
-
-        [Route("login")]
-        [HttpGet]
+        /// <returns>String irá informar qual o objeto será cadastrado.</returns>   
+        [Route("autenticar")]
+        [HttpPost]
         public IActionResult Validar([FromBody] Login login, [FromServices] SigningConfigurations signingConfigurations, [FromServices] TokenConfigurations tokenConfigurations)
         {
             Login log = _loginRepository.Listar().FirstOrDefault(c => c.email == login.email && c.senha == login.senha);
@@ -53,15 +52,14 @@ namespace senai.spacekids.webapi.Controllers
                     new[] {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
                         new Claim(JwtRegisteredClaimNames.UniqueName, log.LoginId.ToString()),
-                        new Claim(ClaimTypes.Email, log.email)
+                        new Claim(ClaimTypes.Email, log.email),
+                        new Claim("userId", log.LoginId.ToString()),
+                        new Claim(ClaimTypes.Role, log.Permissao)
                     }
                 );
 
-                DateTime dataCriacao = DateTime.Now;
-                DateTime dataExpiracao = dataCriacao + TimeSpan.FromSeconds(tokenConfigurations.Seconds);
-
                 var handler = new JwtSecurityTokenHandler();
-                var securityToken = handler.CreateToken(new Microsoft.IdentityModel.Tokens.SecurityTokenDescriptor
+                var securityToken = handler.CreateToken(new SecurityTokenDescriptor
                 {
                     Issuer = tokenConfigurations.Issuer,
                     Audience = tokenConfigurations.Audience,
@@ -73,8 +71,6 @@ namespace senai.spacekids.webapi.Controllers
                 var retorno = new
                 {
                     autenticacao = true,
-                    created = dataCriacao.ToString("yyyy-MM-dd HH:mm:ss"),
-                    expiration = dataExpiracao.ToString("yyyy-MM-dd HH:mm:ss"),
                     acessToken = token,
                     message = "Ok"
                 };
@@ -94,19 +90,31 @@ namespace senai.spacekids.webapi.Controllers
         /// <summary>
         /// Efetua o cadastro do pai no sistema.
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST / cadastrar
+        ///     {
+        ///        "nome" : "fulano de tal"    
+        ///        "email": "email@email.com",
+        ///        "senha": "1234",
+        ///     }
+        ///
+        /// </remarks>
         /// <returns>Retorna uma lista de pais cadastrados.</returns>
-       
         [Route("cadastrar")]
         [HttpPost]
-        public IActionResult Cadastro([FromBody] Login login)
+        public IActionResult Cadastro([FromBody] Login login) 
+         
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
+                login.Permissao = "Pai";
                 _loginRepository.Inserir(login);
-                return Ok("Login " + login.email + " Login validado");
+                return Ok(login);
             }
             catch (Exception ex)
             {
@@ -152,8 +160,17 @@ namespace senai.spacekids.webapi.Controllers
 
             try
             {
-                _loginRepository.Atualizar(login);
-                return Ok($"Usuário {login.nome} Atualizado Com sucesso.");
+                Login login_ = _loginRepository.BuscarPorId(login.LoginId);
+
+                if(login == null)
+                    return NotFound("Login não encontrado");
+
+                login_.email = login.email;
+                login_.nome = login.nome;
+                login_.Permissao = login.Permissao;
+
+                _loginRepository.Atualizar(login_);
+                return Ok(login_);
             }
             catch (Exception ex)
             {

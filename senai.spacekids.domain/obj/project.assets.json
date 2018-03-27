@@ -280,11 +280,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
+      "projectUniqueName": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
       "projectName": "senai.spacekids.domain",
-      "projectPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
+      "projectPath": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj",
       "packagesPath": "C:\\Users\\Maciel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\obj\\",
+      "outputPath": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

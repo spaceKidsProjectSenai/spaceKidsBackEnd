@@ -12763,11 +12763,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.webapi\\senai.spacekids.webapi.csproj",
+      "projectUniqueName": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.webapi\\senai.spacekids.webapi.csproj",
       "projectName": "senai.spacekids.webapi",
-      "projectPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.webapi\\senai.spacekids.webapi.csproj",
+      "projectPath": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.webapi\\senai.spacekids.webapi.csproj",
       "packagesPath": "C:\\Users\\Maciel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.webapi\\obj\\",
+      "outputPath": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.webapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12786,11 +12786,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj": {
-              "projectPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj"
+            "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj": {
+              "projectPath": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.repository\\senai.spacekids.repository.csproj"
             },
-            "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj": {
-              "projectPath": "C:\\Users\\Maciel\\Desktop\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj"
+            "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj": {
+              "projectPath": "C:\\Users\\Maciel\\Desktop\\Space Kids\\senai.spacekids.solution\\senai.spacekids.domain\\senai.spacekids.domain.csproj"
             }
           }
         }

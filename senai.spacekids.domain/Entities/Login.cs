@@ -16,11 +16,16 @@ namespace senai.spacekids.domain.Entities
         [Required]
         [StringLength(12, MinimumLength = 4)]
         [DataType(DataType.Password)]
+        [NotMapped]
         public string senha {get;set;}
 
         [Required]
         [StringLength(100)]
         public string nome {get;set;}
+
+        [Required]
+        [StringLength(100)]
+        public string Permissao { get; set; }
 
         public ICollection<Crianca> Criancas{get;set;}
     }

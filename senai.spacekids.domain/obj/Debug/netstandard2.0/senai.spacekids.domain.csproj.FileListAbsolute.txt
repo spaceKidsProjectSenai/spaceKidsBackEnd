@@ -22,3 +22,11 @@ C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.domain\obj\Debu
 C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.AssemblyInfo.cs
 C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.dll
 C:\Users\Maciel\Desktop\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.pdb
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\bin\Debug\netstandard2.0\senai.spacekids.domain.deps.json
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\bin\Debug\netstandard2.0\senai.spacekids.domain.dll
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\bin\Debug\netstandard2.0\senai.spacekids.domain.pdb
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.csproj.CoreCompileInputs.cache
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.AssemblyInfoInputs.cache
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.AssemblyInfo.cs
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.dll
+C:\Users\Maciel\Desktop\Space Kids\senai.spacekids.solution\senai.spacekids.domain\obj\Debug\netstandard2.0\senai.spacekids.domain.pdb
