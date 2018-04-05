@@ -49,7 +49,7 @@ namespace senai.spacekids.webapi.Controllers {
         /// <summary>
         /// Cria uma lista com os cadastros desempenho das crianças no sistema.
         /// </summary>
-        /// <returns>Retorna uma lista de desempenho das crianças.</returns> 
+        /// <returns>Retorna uma lista de desempenho da criança.</returns> 
         [Route ("listar")]
         [HttpGet]
         public IActionResult Listar () {
