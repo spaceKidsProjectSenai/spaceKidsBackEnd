@@ -11,9 +11,10 @@ using System;
 namespace senai.spacekids.repository.Migrations
 {
     [DbContext(typeof(SpaceKidsContext))]
-    partial class SpaceKidsContextModelSnapshot : ModelSnapshot
+    [Migration("20180403230030_atualiza_tabela_fase")]
+    partial class atualiza_tabela_fase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

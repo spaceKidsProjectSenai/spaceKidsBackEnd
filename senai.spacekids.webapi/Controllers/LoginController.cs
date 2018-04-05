@@ -12,12 +12,13 @@ using senai.spacekids.repository.Repositories;
 
 namespace senai.spacekids.webapi.Controllers
 {
+    /// <summary>
+    /// Cadastra e realiza login do pai no banco de dados.
+    /// </summary>
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
-
     public class LoginController : Controller
     {
-         
         private IBaseRepository<Login> _loginRepository;
 
         public LoginController(IBaseRepository<Login> loginRepository)
@@ -26,7 +27,7 @@ namespace senai.spacekids.webapi.Controllers
         }
 
         /// <summary>
-        /// Cadastra e realiza login do pai no banco de dados
+        /// Valida o login do pai no banco de dados.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -44,10 +45,11 @@ namespace senai.spacekids.webapi.Controllers
         [HttpPost]
         public IActionResult Validar([FromBody] Login login, [FromServices] SigningConfigurations signingConfigurations, [FromServices] TokenConfigurations tokenConfigurations)
         {
-            Login log = _loginRepository.Listar().FirstOrDefault(c => c.email == login.email && c.senha == login.senha);
+            var log = _loginRepository.Listar().FirstOrDefault(c => c.email == login.email && c.senha == login.senha);
             if (log != null)
             {
-                ClaimsIdentity identity = new ClaimsIdentity(
+                ClaimsIdentity identity = new ClaimsIdentity
+                (
                     new GenericIdentity(login.LoginId.ToString(), "Login"),
                     new[] {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
@@ -85,8 +87,8 @@ namespace senai.spacekids.webapi.Controllers
             };
 
             return BadRequest(retornoerro);
-            
-        } 
+         } 
+
         /// <summary>
         /// Efetua o cadastro do pai no sistema.
         /// </summary>
@@ -105,11 +107,9 @@ namespace senai.spacekids.webapi.Controllers
         [Route("cadastrar")]
         [HttpPost]
         public IActionResult Cadastro([FromBody] Login login) 
-         
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || login==null)
                 return BadRequest(ModelState);
-
             try
             {
                 login.Permissao = "Pai";
@@ -126,12 +126,10 @@ namespace senai.spacekids.webapi.Controllers
         /// Deleta o cadastro do pai no sistema.
         /// </summary>
         /// <returns>Deleta o cadastro de um pai pelo Id.</returns>
-  
         [Route("deletar/{id}")]
         [HttpDelete]
         public IActionResult Deletar(int id)
         {
-
             try
             {
                 _loginRepository.Deletar(id);
@@ -140,24 +138,20 @@ namespace senai.spacekids.webapi.Controllers
             }
             catch (System.Exception e)
             {
-
                 return BadRequest("Erro ao deletar login " + e.Message);
             }
-
         }
 
         /// <summary>
         /// Efetua a atualização dos dados do login do pai.
         /// </summary>
         /// <returns>Retorna um login atualizado.</returns> 
-
         [Route("atualizar")]
         [HttpPut]
         public IActionResult Atualizar([FromBody] Login login)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             try
             {
                 Login login_ = _loginRepository.BuscarPorId(login.LoginId);
@@ -176,21 +170,22 @@ namespace senai.spacekids.webapi.Controllers
             {
                 return BadRequest("Erro ao atualizar dados " + ex.Message);
             }
-
         }  
+
+
+
 
         /// <summary>
         /// Cria uma lista com os cadastros dos pais no sistema.
         /// </summary>
         /// <returns>Retorna uma lista de pais cadastrados.</returns>     
- 
         [Route("listar")]
         [HttpGet]
         public IActionResult Listar()
         {
             try
             {
-                return Ok(_loginRepository.Listar(new string[]{"Login"}));
+                return Ok(_loginRepository.Listar(new string[]{"Criancas","Criancas.Fases"}));
             }
             catch (Exception ex)
             {

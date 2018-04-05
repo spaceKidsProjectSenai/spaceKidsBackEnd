@@ -17,6 +17,8 @@ namespace senai.spacekids.webapi.Controllers
             _faseRepository = faseRepository;
         }
 
+
+
         /// <summary>
         /// Efetua o cadastro da fase no sistema.
         /// </summary>
@@ -39,6 +41,27 @@ namespace senai.spacekids.webapi.Controllers
                 return BadRequest("Erro ao cadastrar" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Listar as fases no sistema.
+        /// </summary>
+        /// <returns>Lista as fases que o jogo possui.</returns>
+        /// 
+        [Route("listar")]
+        [HttpGet]
+        public IActionResult Listar() 
+        {
+            try
+            {
+                return Ok(_faseRepository.Listar());
+            }
+            catch(SystemException ex)
+            {
+                return BadRequest($"Erro ao listar fases."+ ex.Message);
+            }
+
+        }
+
 
         /// <summary>
         /// Deleta o cadastro da fase no sistema.

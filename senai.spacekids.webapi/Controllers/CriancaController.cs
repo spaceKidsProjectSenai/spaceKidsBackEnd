@@ -93,6 +93,7 @@ namespace senai.spacekids.webapi.Controllers
 
         [Route("listarporpai")]
         [HttpGet]
+        [Authorize("Bearer")]
         public IActionResult ListarPorPai() 
         {
             if(!ModelState.IsValid) 

@@ -7,14 +7,9 @@ namespace senai.spacekids.domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FaseId {get;set;}
+        
         [Required]
         [StringLength(100)]
         public string nome {get;set;}
-
-
-
-        
-        
-
     }
 }

@@ -78,12 +78,18 @@ namespace senai.spacekids.webapi
                     Description = "Test Simples",
                     TermsOfService = "None",
                     Contact = new Contact 
-                    {Name = "Cristiane Maciel, Henrique da Mata", Email = "cristiane.pachecoreis@gmail.com, henrique.damata.novai@gmail.com"}
+                    {Name = "Cristiane Maciel, Henrique da Mata", Email = "cristiane.pachecoreis@gmail.com, henrique.damata.novais@gmail.com"}
                 });
+                
+                c.DocInclusionPredicate((docMame, apiDesc) =>{
+                    if(apiDesc.HttpMethod == null) return false;
+                    return true;
+                });
+                
                 var basePath = AppContext.BaseDirectory;
                 var xmlPath = Path.Combine (basePath, "spacekids.xml");
 
-            c.IncludeXmlComments(xmlPath);
+                c.IncludeXmlComments(xmlPath);
 
             });
 
@@ -107,8 +113,12 @@ namespace senai.spacekids.webapi
             }
             
             app.UseAuthentication();
-                
-            app.UseCors("AllowAnyOrigin");
+
+            app.UseCors(conf => {
+                conf.AllowAnyHeader();
+                conf.AllowAnyMethod();
+                conf.AllowAnyOrigin();
+            });
             
             app.UseMvc();
 
