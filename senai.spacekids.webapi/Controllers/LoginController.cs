@@ -118,7 +118,11 @@ namespace senai.spacekids.webapi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("Erro ao acessar. " + ex.Message);
+                var retorno = new {
+                    autenticacao = false,
+                    message = ex.Message
+                };
+                return BadRequest(retorno);
             }            
         }
 
