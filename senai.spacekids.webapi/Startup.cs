@@ -103,12 +103,6 @@ namespace senai.spacekids.webapi
              });;
 
              services.AddScoped(typeof(IBaseRepository<>),typeof(BaseRepository<>));
-        
-        //os comandos abaixo irão permitir que a foto da criança seja armazenada no diretório foto
-            services.AddSingleton<IFileProvider>(
-                new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "fotos")));
- 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
