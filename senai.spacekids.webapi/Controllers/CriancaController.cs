@@ -53,12 +53,16 @@ namespace senai.spacekids.webapi.Controllers
                 var userId = claim.FirstOrDefault(c => c.Type == "userId").Value;
                 crianca.loginId = int.Parse(userId);
                 _criancaRepository.Inserir(crianca);
-                return Ok(crianca.nome);
+                return Ok(crianca);
             }
-            catch (System.Exception e)
+            catch (System.Exception ex)
             {
-                
-                return BadRequest($"Erro ao cadastrar jogador {e}");
+                var retorno = new {
+                    autenticacao = false,
+                    message = $"Erro ao cadastrar jogador {ex}"
+                };
+                return BadRequest(retorno);
+                //return BadRequest($"Erro ao cadastrar jogador {e}");
             }
         }
 
