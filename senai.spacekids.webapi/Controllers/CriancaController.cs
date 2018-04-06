@@ -112,9 +112,13 @@ namespace senai.spacekids.webapi.Controllers
 
                return Ok (_criancaRepository.Listar().Where(x => x.loginId.ToString() == userId));
             }
-            catch (System.Exception e)
+            catch (System.Exception ex)
             {
-                return BadRequest($"Erro ao listar crianças {e}");
+                var retorno = new {
+                    autenticacao = false,
+                    message = $"Erro ao listar crianças {ex}"
+                };
+                return BadRequest(retorno);
                 
             }
         }
